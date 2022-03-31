@@ -1,20 +1,18 @@
 import fetch from 'node-fetch';
 
-const mapData = async (data) => {
+const mapData = (data) => { 
+      
+    return data.map((data) => data.name);
     
-    let mappedData = data.map((data) => data.name);
-    return mappedData;
-
 }
 
 export default async function getPeople() {
     try {
         const response = await fetch('http://swapi.dev/api/people');
+
         const data = await response.json();
 
-        const mappedData = mapData(data.results);
-
-        return mappedData;
+        return mapData(data.results);
 
 
 
